@@ -6,3 +6,20 @@
 body {
     background-color: grey;
 }
+
+#libraryDiv {
+    display: flex;
+    gap: 2rem;
+}
+
+.book {
+    height: 15rem;
+    width: 12.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding-left: 1rem;
+}

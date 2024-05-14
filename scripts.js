@@ -19,24 +19,30 @@ function Book(title, author, pages, readStatus) {
   };
 }
 
-function addBookToLibrary(bookInstance) {
-  myLibrary.push(bookInstance);
+function addBookToLibrary(title, author, pages, readStatus) {
+  const book = new Book(title, author, pages, readStatus);
+  myLibrary.push(book);
 }
 
-console.log(myLibrary);
-
 addBookToLibrary("The Hobbit", "J.R.R.Tolkien", 295, false);
-console.log(myLibrary);
+addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
 
-// const theHobbit = new Book("The Hobbit", "J.R.R.Tolkien", "295", false);
-// const anotherBook = new Book("Something", "Author", 200, false);
+function displayBooks() {
+  for (i = 0; i < myLibrary.length; i++) {
+    const book = myLibrary[i];
 
-// const bookArray = [theHobbit, anotherBook];
+    const newBookDiv = document.createElement("div");
+    newBookDiv.className = "book";
 
-// bookArray.forEach((book) => {
-//   myLibrary.push(book);
-// });
+    newBookDiv.innerHTML = `
+    <h2>${book.title}</h2>
+    <p>Author: ${book.author}</p>
+    <p>Pages: ${book.pages}</p>
+    <p>Status: ${book.readStatus ? "Read" : "Not read"}</p>
+  `;
 
-// console.log(myLibrary);
+    document.getElementById("libraryDiv").appendChild(newBookDiv);
+  }
+}
 
-//console.log(theHobbit.info());
+displayBooks();
