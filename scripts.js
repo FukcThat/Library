@@ -28,9 +28,11 @@ addBookToLibrary("The Hobbit", "J.R.R.Tolkien", 295, false);
 addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
 
 function displayBooks() {
-  for (i = 0; i < myLibrary.length; i++) {
-    const book = myLibrary[i];
+  const libraryDiv = document.getElementById("libraryDiv");
+  libraryDiv.innerHTML = "";
 
+  for (let i = 0; i < myLibrary.length; i++) {
+    const book = myLibrary[i];
     const newBookDiv = document.createElement("div");
     newBookDiv.className = "book";
 
@@ -41,8 +43,36 @@ function displayBooks() {
     <p>Status: ${book.readStatus ? "Read" : "Not read"}</p>
   `;
 
-    document.getElementById("libraryDiv").appendChild(newBookDiv);
+    libraryDiv.appendChild(newBookDiv);
   }
 }
 
 displayBooks();
+
+document.getElementById("showFormBtn").addEventListener("click", function () {
+  const form = document.getElementById("addBookForm");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("addBookForm");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    let title = document.getElementById("titleInput").value;
+    let author = document.getElementById("authorInput").value;
+    let pages = parseInt(document.getElementById("pagesInput").value, 10);
+    let readStatus = document.getElementById("readStatusInput").checked;
+
+    addBookToLibrary(title, author, pages, readStatus);
+
+    displayBooks();
+    form.reset();
+
+    document.getElementById("addBookForm").style.display = "none";
+  });
+});
