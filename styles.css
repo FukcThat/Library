@@ -21,6 +21,12 @@ button:hover {
     background: linear-gradient(white, pink);
 }
 
+form {
+    background-color: #f183a44e;
+
+}
+
+
 #libraryDiv {
     display: flex;
     gap: 2rem;
@@ -37,3 +43,52 @@ button:hover {
     gap: 1rem;
     padding-left: 1rem;
 }
+
+.switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  
+  .slider {
+    position: relative;
+    cursor: pointer;
+    width: 3rem; 
+    height: 1.5rem;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.15rem;
+    width: 1.15rem;
+    left: 0.3rem;
+    bottom: 0.1675rem;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #f183a4;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #f183a4;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(1.25rem);
+    transform: translateX(1.25rem);
+  }

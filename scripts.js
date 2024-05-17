@@ -24,9 +24,6 @@ function addBookToLibrary(title, author, pages, readStatus) {
   myLibrary.push(book);
 }
 
-addBookToLibrary("The Hobbit", "J.R.R.Tolkien", 295, false);
-addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
-
 function displayBooks() {
   const libraryDiv = document.getElementById("libraryDiv");
   libraryDiv.innerHTML = "";
@@ -44,18 +41,40 @@ function displayBooks() {
       console.log(i);
     });
 
+    const label = document.createElement("label");
+    label.className = "switch";
+
+    const span = document.createElement("span");
+    span.textContent = "Read:";
+    label.appendChild(span);
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.checked = book.readStatus;
+    input.addEventListener("change", () => {
+      book.readStatus = input.checked;
+    });
+
+    const sliderSpan = document.createElement("span");
+    sliderSpan.className = "slider round";
+    label.appendChild(input);
+    label.appendChild(sliderSpan);
+
     newBookDiv.innerHTML = `
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
     <p>Pages: ${book.pages}</p>
-    <p>Status: ${book.readStatus ? "Read" : "Not read"}</p>
       `;
 
+    newBookDiv.appendChild(label);
     newBookDiv.appendChild(deleteBtn);
 
     libraryDiv.appendChild(newBookDiv);
   }
 }
+
+addBookToLibrary("The Hobbit", "J.R.R.Tolkien", 295, false);
+addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
 
 displayBooks();
 
