@@ -4,7 +4,13 @@
 }
 
 body {
-    background-color: grey;
+    background-image: url(LibraryBakcgroundImage.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    gap: 4rem;
 }
 
 button {
@@ -23,9 +29,7 @@ button:hover {
 
 form {
     background-color: #f183a44e;
-
 }
-
 
 #libraryDiv {
     display: flex;
