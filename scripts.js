@@ -36,12 +36,22 @@ function displayBooks() {
     const newBookDiv = document.createElement("div");
     newBookDiv.className = "book";
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", () => {
+      myLibrary.splice(i, 1);
+      displayBooks();
+      console.log(i);
+    });
+
     newBookDiv.innerHTML = `
     <h2>${book.title}</h2>
     <p>Author: ${book.author}</p>
     <p>Pages: ${book.pages}</p>
     <p>Status: ${book.readStatus ? "Read" : "Not read"}</p>
-  `;
+      `;
+
+    newBookDiv.appendChild(deleteBtn);
 
     libraryDiv.appendChild(newBookDiv);
   }
