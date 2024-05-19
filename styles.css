@@ -5,58 +5,124 @@
 
 body {
     background-image: url(LibraryBakcgroundImage.jpg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 4rem;
-    gap: 4rem;
 }
 
 button {
-    height: 3rem;
-    width: 9rem;
-    border-radius: 0.5rem;
     border: none;
-    box-shadow: 1px 1px 2px rgb(125, 102, 106);
-    background: linear-gradient(pink, white);
+    border-radius: 15px;
 }
 
 button:hover {
     cursor: pointer;
-    background: linear-gradient(white, pink);
 }
 
 h1 {
-    color: white;
+  position: fixed;
+  left: 15rem;
+  color: white;
+  text-shadow: black 2px 2px 2px;
+  transition: left 0.5s;
+}
+
+h2 {
+  justify-self: center;
 }
 
 form {
-    background-color: #f183a44e;
+  height: 40%;
+  width: 0rem;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  left: 0;
+  backdrop-filter: blur(0.5rem);
+  background-color: #ffffff84;
+  border-radius: 0rem 0rem 1rem 0rem;
+  overflow-x: hidden;
+  transition: width 0.5s;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+input {
+  height: 2.5rem;
+  width: 80%;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+#formInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #libraryDiv {
+    position: absolute;
+    top: 14rem;
+    left: 4rem;
     display: flex;
     gap: 2rem;
+    padding: 2rem;
+    transition: left 0.5s;
 }
 
 .book {
-    height: 20rem;
-    width: 12.5rem;
-    background-color: white;
+    height: 18rem;
+    width: 12rem;
+    backdrop-filter: blur(5rem);
+    background-color: rgba(255, 255, 255, 0.33);
     border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr 1fr 4fr;
     gap: 1rem;
     padding-left: 1rem;
     padding-top: 1rem;
+}
+
+.deleteButton {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  background-color: rgba(126, 0, 0, 0.1);
+  margin-left: 4rem;
+  margin-top: 1rem;
+}
+
+#showFormBtn {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  height: 3rem;
+  width: 6rem;
+  background: none;
+  background-color: rgba(130, 214, 107, 0.75);
+  box-shadow: black 2px 2px 2px;
+  border-radius: 0rem 1rem 1rem 0rem;
+  transition: left 0.5s;
+}
+
+#submitBtn {
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 2rem;
+  justify-self: center;
+}
+
+#submitBtn:hover {
+  cursor: pointer;
 }
 
 .switch {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
+    padding-top: 1rem;
   }
   
   .switch input { 
@@ -70,7 +136,7 @@ form {
     cursor: pointer;
     width: 3rem; 
     height: 1.5rem;
-    background-color: #ccc;
+    background-color: rgba(245, 61, 61, 0.75);
     transition: .4s;
     border-radius: 34px;
   }
@@ -88,7 +154,7 @@ form {
   }
   
   input:checked + .slider {
-    background-color: #f183a4;
+    background-color: rgba(130, 214, 107, 0.75);
   }
   
   input:focus + .slider {
@@ -99,3 +165,11 @@ form {
     -webkit-transform: translateX(1.25rem);
     transform: translateX(1.25rem);
   }
+
+  .homemade-apple-regular {
+    font-family: "Homemade Apple", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+  }
+  
