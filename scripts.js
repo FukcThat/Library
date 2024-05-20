@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     displayBooks();
     form.reset();
 
-    document.getElementById("addBookForm").style.display = "none";
+    form.style.width = "0rem";
+    document.getElementById("showFormBtn").style.left = "0";
   });
 });
