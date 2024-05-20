@@ -90,12 +90,10 @@ document.getElementById("showFormBtn").addEventListener("click", function () {
   if (form.style.width === "15rem") {
     form.style.width = "0rem";
     button.style.left = "0";
-    header.style.left = "15rem";
-    books.style.left = "4rem";
+    books.style.left = "5rem";
   } else {
     form.style.width = "15rem";
     button.style.left = "15rem";
-    header.style.left = "25rem";
     books.style.left = "20rem";
   }
 });

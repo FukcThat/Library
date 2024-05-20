@@ -12,11 +12,17 @@
       href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1 class="homemade-apple-regular" id="Title">A little library</h1>
     <form id="addBookForm">
-      <h2>Add a book</h2>
+      <h2 id="formHeader">Add a book</h2>
       <div id="formInputs">
         <input type="text" id="titleInput" placeholder="Title" required />
         <input type="text" id="authorInput" placeholder="Author" required />
@@ -27,12 +33,14 @@
           placeholder="Number of Pages"
           required
         />
+      </div>
+      <div id="formSwitchSubmit">
         <label class="switch">
           Read:<input type="checkbox" id="readStatusInput" />
           <span class="slider round"></span>
         </label>
+        <input type="submit" value="Submit" id="submitBtn" />
       </div>
-      <input type="submit" value="Submit" id="submitBtn" />
     </form>
     <button id="showFormBtn">
       <svg
