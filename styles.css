@@ -122,14 +122,19 @@ input {
 }
 
 #submitBtn {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1.25rem;
   height: 2.5rem;
   width: 9rem;
   border-radius: 2rem;
-  background: linear-gradient(rgb(34, 129, 161), rgb(99, 169, 204));
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.452);
+  background: linear-gradient(rgb(215, 137, 63), rgb(185, 108, 37));
 }
 
 #submitBtn:hover {
   cursor: pointer;
+  color: rgb(234, 199, 142);
 }
 
 .switch {
