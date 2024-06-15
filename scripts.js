@@ -1,11 +1,33 @@
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
-  this.info = function () {
+// function Book(title, author, pages, readStatus) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.readStatus = readStatus;
+//   this.info = function () {
+//     return (
+//       this.title +
+//       " by " +
+//       this.author +
+//       ", " +
+//       this.pages +
+//       " pages, " +
+//       (this.readStatus ? "" : "not ") +
+//       "read"
+//     );
+//   };
+// }
+
+class Book {
+  constructor(title, author, pages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+  }
+
+  info() {
     return (
       this.title +
       " by " +
@@ -16,7 +38,7 @@ function Book(title, author, pages, readStatus) {
       (this.readStatus ? "" : "not ") +
       "read"
     );
-  };
+  }
 }
 
 function addBookToLibrary(title, author, pages, readStatus) {
