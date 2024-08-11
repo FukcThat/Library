@@ -1,24 +1,5 @@
 const myLibrary = [];
 
-// function Book(title, author, pages, readStatus) {
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.readStatus = readStatus;
-//   this.info = function () {
-//     return (
-//       this.title +
-//       " by " +
-//       this.author +
-//       ", " +
-//       this.pages +
-//       " pages, " +
-//       (this.readStatus ? "" : "not ") +
-//       "read"
-//     );
-//   };
-// }
-
 class Book {
   constructor(title, author, pages, readStatus) {
     this.title = title;
@@ -139,3 +120,28 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("showFormBtn").style.left = "0";
   });
 });
+
+const titleInput = document.querySelector("#titleInput");
+const titleInputError = document.querySelector("#titleInputError");
+
+titleInput.addEventListener("input", (e) => {
+  if (titleInput.validity.valid) {
+    titleInputError.textContent = "";
+    titleInputError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+form.addEventListener("submit", (e) => {
+  if (!titleInput.validity.valid) {
+    showError();
+    e.preventDefault();
+  }
+});
+
+const showError = () => {
+  if (titleInput.validity.valueMissing) {
+    titleInputError.textContent = "Please enter a book title";
+  }
+};

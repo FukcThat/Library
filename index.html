@@ -21,11 +21,13 @@
   </head>
   <body>
     <h1 class="homemade-apple-regular" id="Title">A little library</h1>
-    <form id="addBookForm">
+    <form novalidate id="addBookForm">
       <h2 id="formHeader">Add a book</h2>
       <div id="formInputs">
         <input type="text" id="titleInput" placeholder="Title" required />
+        <span class="error" id="titleInputError" aria-live="polite"></span>
         <input type="text" id="authorInput" placeholder="Author" required />
+        <span class="error" aria-live="polite"></span>
         <input
           type="number"
           id="pagesInput"
@@ -33,6 +35,7 @@
           placeholder="Number of Pages"
           required
         />
+        <span class="error" aria-live="polite"></span>
       </div>
       <div id="formSwitchSubmit">
         <label class="switch">
