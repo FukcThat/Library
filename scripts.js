@@ -84,6 +84,32 @@ addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
 
 displayBooks();
 
+const form = document.querySelector("form");
+const titleInput = document.querySelector("#titleInput");
+const titleInputError = document.querySelector("#titleInputError");
+
+titleInput.addEventListener("input", (e) => {
+  if (titleInput.validity.valid) {
+    titleInputError.textContent = "";
+    titleInputError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+// form.addEventListener("submit", (e) => {
+//   if (!titleInput.validity.valid) {
+//     showError();
+//     e.preventDefault();
+//   }
+// });
+
+const showError = () => {
+  if (titleInput.validity.valueMissing) {
+    titleInputError.textContent = "Please enter a book title";
+  }
+};
+
 document.getElementById("showFormBtn").addEventListener("click", function () {
   const form = document.getElementById("addBookForm");
   const button = document.getElementById("showFormBtn");
@@ -111,6 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let pages = parseInt(document.getElementById("pagesInput").value, 10);
     let readStatus = document.getElementById("readStatusInput").checked;
 
+    if (!titleInput.validity.valid) {
+      showError();
+      e.preventDefault();
+    }
+
     addBookToLibrary(title, author, pages, readStatus);
 
     displayBooks();
@@ -120,28 +151,3 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("showFormBtn").style.left = "0";
   });
 });
-
-const titleInput = document.querySelector("#titleInput");
-const titleInputError = document.querySelector("#titleInputError");
-
-titleInput.addEventListener("input", (e) => {
-  if (titleInput.validity.valid) {
-    titleInputError.textContent = "";
-    titleInputError.className = "error";
-  } else {
-    showError();
-  }
-});
-
-form.addEventListener("submit", (e) => {
-  if (!titleInput.validity.valid) {
-    showError();
-    e.preventDefault();
-  }
-});
-
-const showError = () => {
-  if (titleInput.validity.valueMissing) {
-    titleInputError.textContent = "Please enter a book title";
-  }
-};
