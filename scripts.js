@@ -1,4 +1,38 @@
+const form = document.querySelector("form");
+const titleInput = document.querySelector("#titleInput");
+const titleInputError = document.querySelector("#titleInputError");
+const authorInput = document.querySelector("#authorInput");
+const authorInputError = document.querySelector("#authorInputError");
+const pagesInput = document.querySelector("#pagesInput");
+const pagesInputError = document.querySelector("#pagesInputError");
 const myLibrary = [];
+
+titleInput.addEventListener("input", () => {
+  if (titleInput.validity.valid) {
+    titleInputError.textContent = "";
+    titleInputError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+authorInput.addEventListener("input", () => {
+  if (authorInput.validity.valid) {
+    authorInputError.textContent = "";
+    authorInputError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+pagesInput.addEventListener("input", () => {
+  if (pagesInput.validity.valid) {
+    pagesInputError.textContent = "";
+    pagesInputError.className = "error";
+  } else {
+    showError();
+  }
+});
 
 class Book {
   constructor(title, author, pages, readStatus) {
@@ -79,36 +113,24 @@ function displayBooks() {
   }
 }
 
+const showError = () => {
+  if (titleInput.validity.valueMissing) {
+    titleInputError.textContent = "What's the title?";
+  }
+
+  if (authorInput.validity.valueMissing) {
+    authorInputError.textContent = "Who's the Author?";
+  }
+
+  if (pagesInput.validity.valueMissing) {
+    pagesInputError.textContent = "How many pages does it have?";
+  }
+};
+
 addBookToLibrary("The Hobbit", "J.R.R.Tolkien", 295, false);
 addBookToLibrary("The fault in our stars", "WhatsHisName", 187, true);
 
 displayBooks();
-
-const form = document.querySelector("form");
-const titleInput = document.querySelector("#titleInput");
-const titleInputError = document.querySelector("#titleInputError");
-
-titleInput.addEventListener("input", (e) => {
-  if (titleInput.validity.valid) {
-    titleInputError.textContent = "";
-    titleInputError.className = "error";
-  } else {
-    showError();
-  }
-});
-
-// form.addEventListener("submit", (e) => {
-//   if (!titleInput.validity.valid) {
-//     showError();
-//     e.preventDefault();
-//   }
-// });
-
-const showError = () => {
-  if (titleInput.validity.valueMissing) {
-    titleInputError.textContent = "Please enter a book title";
-  }
-};
 
 document.getElementById("showFormBtn").addEventListener("click", function () {
   const form = document.getElementById("addBookForm");
@@ -137,17 +159,21 @@ document.addEventListener("DOMContentLoaded", function () {
     let pages = parseInt(document.getElementById("pagesInput").value, 10);
     let readStatus = document.getElementById("readStatusInput").checked;
 
-    if (!titleInput.validity.valid) {
+    if (
+      !titleInput.validity.valid ||
+      !authorInput.validity.valid ||
+      !pagesInput.validity.valid
+    ) {
       showError();
-      e.preventDefault();
+      event.preventDefault();
+    } else {
+      addBookToLibrary(title, author, pages, readStatus);
+
+      displayBooks();
+      form.reset();
+
+      form.style.width = "0rem";
+      document.getElementById("showFormBtn").style.left = "0";
     }
-
-    addBookToLibrary(title, author, pages, readStatus);
-
-    displayBooks();
-    form.reset();
-
-    form.style.width = "0rem";
-    document.getElementById("showFormBtn").style.left = "0";
   });
 });
